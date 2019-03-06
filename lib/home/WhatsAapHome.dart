@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:clone_whatsapp/home/views/ContactView.dart';
 import 'package:flutter/material.dart';
 import 'package:clone_whatsapp/home/views/Calls.dart';
@@ -6,6 +7,9 @@ import 'package:clone_whatsapp/home/views/Chats.dart';
 import 'package:clone_whatsapp/home/views/Status.dart';
 
 class WhatsAapHome extends StatefulWidget {
+  final List<CameraDescription> cameras;
+  WhatsAapHome(this.cameras);
+
   @override
   _WhatsAapHomeState createState() => _WhatsAapHomeState();
 }
@@ -41,7 +45,7 @@ class _WhatsAapHomeState extends State<WhatsAapHome>
       ),
       body: TabBarView(
         children: <Widget>[
-          CameraView(),
+          CameraView(widget.cameras),
           ChatViewList(),
           StatusView(),
           CallsView()

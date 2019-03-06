@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:clone_whatsapp/home/WhatsAapHome.dart';
+import 'package:camera/camera.dart';
 
-void main() => runApp(MaterialApp(
-  home: MyApp(),
-));
+List<CameraDescription> cameras;
+
+Future<Null> main() async {
+  cameras = await availableCameras();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -15,7 +19,7 @@ class MyApp extends StatelessWidget {
         accentColor: Color(0xff25d366)
       ),
       debugShowCheckedModeBanner: false,
-      home: WhatsAapHome(),
+      home: WhatsAapHome(cameras),
     );
   }
 }
